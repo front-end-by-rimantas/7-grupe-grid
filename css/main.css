@@ -1,0 +1,141 @@
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+    font-size: 40px;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-areas:
+        "header header header"
+        ". hero ."
+        ". services ."
+        ". freelance ."
+        ". testimonials ."
+        "footer footer footer";
+}
+
+header {
+    grid-area: header;
+    background: #EEE;
+}
+
+.hero {
+    grid-area: hero;
+    height: 200px;
+    background: yellow;
+}
+
+.services {
+    grid-area: services;
+    background: pink;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+    grid-template-areas:
+        "title"
+        ".";
+}
+    .services > .service {
+        background: hotpink;
+    }
+
+.freelance {
+    grid-area: freelance;
+    background: aqua;
+}
+
+.testimonials {
+    grid-area: testimonials;
+    background: greenyellow;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "title"
+        ".";
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+}
+    .testimonials > .testimonial {
+        background: gold;
+    }
+
+h2 {
+    grid-area: title;
+}
+
+.ads {
+    display: none;
+    grid-area: ads;
+    background: red;
+}
+
+footer {
+    grid-area: footer;
+    background: brown;
+}
+
+h2 {
+    text-align: center;
+}
+
+@media ( min-width: 600px ) {
+    body {
+        grid-template-columns: 40px 1fr 40px;
+        grid-template-areas:
+            "header header header"
+            ". hero ."
+            ". services ."
+            ". testimonials ."
+            ". freelance ."
+            "footer footer footer";
+    }
+    .testimonials {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "title title"
+            ". .";
+    }
+    .services {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "title title"
+            ". .";
+        grid-column-gap: 20px;
+    }
+    .services > .service:nth-of-type(2) {
+        display: none;
+    }
+}
+
+@media ( min-width: 900px ) {
+    body {
+        grid-template-columns: 1fr 600px 200px 1fr;
+        grid-template-areas:
+            ". header header ."
+            ". hero hero ."
+            ". testimonials ads ."
+            ". services ads ."
+            ". freelance ads ."
+            ". footer footer .";
+    }
+    .ads {
+        display: inline-block;
+    }
+    .services {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "title title title"
+            ". . .";
+        grid-column-gap: 20px;
+    }
+    .services > .service:nth-of-type(2) {
+        display: inline-block;
+    }
+}
